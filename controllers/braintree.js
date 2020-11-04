@@ -42,7 +42,3 @@ exports.processPayment = (req, res) => {
 };
 
 
-
-//BRAINTREE_MARCHANT_ID=pt7gt4rzzjvjr46t
-//BRAINTREE_PUBLIC_KEY=kq8g5nq9f747x62y
-//BRAINTREE_PRIVATE_KEY=69e7f1ac0fb14ddcd690d07ecda8f8ae
