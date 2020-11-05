@@ -1,4 +1,4 @@
-//const User = require('../models/user');
+const User = require('../models/user');
 const  braintree = require('braintree');
 require('dotenv').config();
 
@@ -19,26 +19,26 @@ exports.generateToken = (req, res) => {
     });
 };
 
-//exports.processPayment = (req, res) => {
-//   let nonceFromTheClient = req.body.paymentMethodNonce;
-//    let amountFromTheClient = req.body.amount;
-    // charge
-//    let newTransaction = gateway.transaction.sale(
-//        {
-//            amount: amountFromTheClient,
-//            paymentMethodNonce: nonceFromTheClient,
- //           options: {
- //               submitForSettlement: true
-//            }
- //       },
-//        (error, result) => {
-//            if (error) {
- //               res.status(500).json(error);
- //           } else {
- //               res.json(result);
- //          }
- //       }
- //   );
-//};
+exports.processPayment = (req, res) => {
+  let nonceFromTheClient = req.body.paymentMethodNonce;
+   let amountFromTheClient = req.body.amount;
+    charge
+   let newTransaction = gateway.transaction.sale(
+       {
+           amount: amountFromTheClient,
+           paymentMethodNonce: nonceFromTheClient,
+           options: {
+               submitForSettlement: true
+           }
+       },
+       (error, result) => {
+           if (error) {
+               res.status(500).json(error);
+           } else {
+               res.json(result);
+          }
+       }
+   );
+};
 
 
