@@ -2,12 +2,14 @@ const User = require('../models/user');
 const  braintree = require('braintree');
 require('dotenv').config();
 
+
 const gateway = braintree.connect({
     environment: braintree.Environment.Sandbox,
-    merchantId: "YOUR_PRODUCTION_MERCHANT_ID",
-    publicKey: "YOUR_PRODUCTION_PUBLIC_KEY",
-    privateKey: "YOUR_PRODUCTION_PRIVATE_KEY"
+    merchantId: process.env.BRAINTREE_MARCHANT_ID,
+    publicKey: process.env.BRAINTREE_PUBLIC_KEY,
+    privateKey: process.env.BRAINTREE_PRIVATE_KEY
 });
+
 
 exports.generateToken = (req, res) => {
     gateway.clientToken.generate({}, function(err, response) {
@@ -18,11 +20,10 @@ exports.generateToken = (req, res) => {
         }
     });
 };
-
 exports.processPayment = (req, res) => {
   let nonceFromTheClient = req.body.paymentMethodNonce;
    let amountFromTheClient = req.body.amount;
-    charge
+    //charge
    let newTransaction = gateway.transaction.sale(
        {
            amount: amountFromTheClient,
@@ -40,5 +41,4 @@ exports.processPayment = (req, res) => {
        }
    );
 };
-
 
